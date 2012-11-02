@@ -1,0 +1,4 @@
+target/
+src/main/resources/cz/fjfi/pvs/kosapi/credentials.properties
+nb-configuration.xml
+notes.md
