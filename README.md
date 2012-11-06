@@ -17,3 +17,7 @@ Seznámit se s agilním programováním
 - Vytvořit projektovou strukturu pro ide's (Honza)
 - Najit jmeno pro projekt
 
+## Backlog
+
+- Travis login 
+
