@@ -1,5 +1,6 @@
 # Kosapi projekt v PVS
 
+[![Build Status](https://travis-ci.org/jandoubek/fjfi-pvs-kosapi.png)](https://travis-ci.org/jandoubek/fjfi-pvs-kosapi])
 
 Seznámit se s agilním programováním
 
