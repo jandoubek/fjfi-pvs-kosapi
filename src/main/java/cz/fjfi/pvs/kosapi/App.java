@@ -19,7 +19,7 @@ public class App
       
         HttpsClient webClient = new HttpsClient(name, password, base_url);
         String response = webClient.getResource("divisions");
-        System.out.println(response);
+        AtomParser atomParser = new AtomParser(response);
     }
     
     public static Properties loadProperties(String properties) throws IOException{
