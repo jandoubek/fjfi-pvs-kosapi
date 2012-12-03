@@ -1,5 +1,5 @@
 
-package cz.fjfi.pvs.kosapi;
+package cz.fjfi.pvs.kosapi.web;
 
 /**
  * Class base from http://www.mkyong.com/java/java-https-client-httpsurlconnection-example/

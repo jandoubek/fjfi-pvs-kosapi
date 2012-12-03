@@ -1,5 +1,5 @@
 
-package cz.fjfi.pvs.kosapi;
+package cz.fjfi.pvs.kosapi.web;
 
 import javax.xml.ws.WebServiceException;
 

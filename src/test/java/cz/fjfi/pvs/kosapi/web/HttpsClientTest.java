@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package cz.fjfi.pvs.kosapi;
+package cz.fjfi.pvs.kosapi.web;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

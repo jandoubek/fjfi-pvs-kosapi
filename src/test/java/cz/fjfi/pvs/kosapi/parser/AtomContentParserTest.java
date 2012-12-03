@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package cz.fjfi.pvs.kosapi;
+package cz.fjfi.pvs.kosapi.parser;
 
 import java.util.ArrayList;
 import java.util.Arrays;

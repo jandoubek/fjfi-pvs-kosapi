@@ -1,5 +1,8 @@
 package cz.fjfi.pvs.kosapi;
 
+import cz.fjfi.pvs.kosapi.web.HttpsClient;
+import cz.fjfi.pvs.kosapi.web.KosapiClient;
+import cz.fjfi.pvs.kosapi.parser.AtomParser;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -15,8 +18,8 @@ public class App
         String base_url = settings.getProperty("kosapi.base_url");
         
         HttpsClient webClient = new HttpsClient(name, password);
-        
         KosapiClient kosapiClient = new KosapiClient(webClient, base_url);
+        
         String response = kosapiClient.getResource("divisions");
         AtomParser atomParser = new AtomParser(response);
         System.out.println(response);
