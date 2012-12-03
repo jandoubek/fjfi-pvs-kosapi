@@ -3,10 +3,7 @@ package cz.fjfi.pvs.kosapi;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
     public static void main( String[] args ) throws IOException
@@ -16,10 +13,13 @@ public class App
         String name = settings.getProperty("kosapi.name");
         String password =  settings.getProperty("kosapi.password");
         String base_url = settings.getProperty("kosapi.base_url");
-      
-        HttpsClient webClient = new HttpsClient(name, password, base_url);
-        String response = webClient.getResource("divisions");
+        
+        HttpsClient webClient = new HttpsClient(name, password);
+        
+        KosapiClient kosapiClient = new KosapiClient(webClient, base_url);
+        String response = kosapiClient.getResource("divisions");
         AtomParser atomParser = new AtomParser(response);
+        System.out.println(response);
     }
     
     public static Properties loadProperties(String properties) throws IOException{

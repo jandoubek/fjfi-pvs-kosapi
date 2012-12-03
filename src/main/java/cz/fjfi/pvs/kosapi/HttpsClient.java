@@ -8,7 +8,6 @@ package cz.fjfi.pvs.kosapi;
 
 
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.security.cert.Certificate;
 import java.io.*;
  
@@ -23,13 +22,11 @@ public class HttpsClient{
     
     private String name;
     private String password;
-    private String baseUrl;
  
-    public  HttpsClient(String name, String password, String baseUrl) throws IOException
+    public  HttpsClient(String name, String password) throws IOException
     {
         setName(name);
         setPassword(password);
-        setBaseUrl(baseUrl);
     }
 
     public String getName() {
@@ -48,31 +45,13 @@ public class HttpsClient{
         this.password = password;
     }
 
-    public String getBaseUrl() {
-        return baseUrl;
-    }
-
-    public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
-    }
-    
-    public String getBaseUrlWithResource(String resource){
-        return getBaseUrl() + resource;
-    };
- 
-    public String getResource(String resource) throws IOException {   
-        String https_url = getBaseUrlWithResource(resource);
-        HttpsURLConnection connection = establishConnection(https_url);
-
-        //dumpl all cert info
+    public String getUrl(URL url) throws IOException {   
+        HttpsURLConnection connection = establishConnection(url);
         checkResponseCode(connection.getResponseCode());
-        
-        //dump all the content
         return readContent(connection);
     }
     
-    private HttpsURLConnection establishConnection(String https_url) throws IOException{
-        URL url = new URL(https_url);
+    private HttpsURLConnection establishConnection(URL url) throws IOException{
       
         String authStringEnc = computeAuthString();
             
@@ -98,7 +77,7 @@ public class HttpsClient{
         if(connection == null){
             return "";
         }
-        			
+		
         BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         
         StringBuilder content = new StringBuilder();
