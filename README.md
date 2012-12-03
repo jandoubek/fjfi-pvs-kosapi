@@ -1,5 +1,6 @@
 # Kosapi projekt v PVS
 
+[![Build Status](https://travis-ci.org/jandoubek/fjfi-pvs-kosapi.png)](https://travis-ci.org/jandoubek/fjfi-pvs-kosapi)
 
 Seznámit se s agilním programováním
 
@@ -16,4 +17,8 @@ Seznámit se s agilním programováním
 - Zařídit instanci kosapi pro FJFI (Honza)
 - Vytvořit projektovou strukturu pro ide's (Honza)
 - Najit jmeno pro projekt
+
+## Backlog
+
+- Travis login 
 
