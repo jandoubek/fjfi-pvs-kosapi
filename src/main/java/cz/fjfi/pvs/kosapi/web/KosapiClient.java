@@ -5,18 +5,17 @@
 package cz.fjfi.pvs.kosapi.web;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 /**
  *
  * @author pvs-kosapi-team
  */
 public class KosapiClient {
     private HttpsClient client;
-    private String base_url;
+    private String baseUrl;
     
-    public KosapiClient(HttpsClient client, String base_url){
+    public KosapiClient(HttpsClient client, String baseUrl){
         this.client = client;
-        setBaseUrl(base_url);
+        setBaseUrl(baseUrl);
     }
     
     public void setName(String name){
@@ -31,19 +30,19 @@ public class KosapiClient {
         client.setPassword(password);
     }
     
-    public void setBaseUrl(String base_url){
-        this.base_url = base_url;
+    public final void setBaseUrl(String baseUrl){
+        this.baseUrl = baseUrl;
     }
     
     public String getBaseUrl(){
-        return base_url;
+        return baseUrl;
     }
     
     public String getBaseUrlWithResource(String resource){
         return getBaseUrl() + resource;
     };
     
-    public String getResource(String resource) throws MalformedURLException, IOException{
+    public String getResource(String resource) throws IOException{
         URL url = new URL(getBaseUrlWithResource(resource));
         return client.getUrl(url);
     }

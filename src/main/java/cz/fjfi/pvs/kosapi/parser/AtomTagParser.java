@@ -70,7 +70,7 @@ public class AtomTagParser {
         Pattern attributesValue = Pattern.compile(patternAttributeString);
         Matcher m = attributesValue.matcher(tagAttributes);
         while (m.find()) {
-            //String tagAttributesOnly = m.group(0);
+            // m.group(0) returns string with tags
             String tagAttributeName = m.group(1);
             String tagAttributeValue = m.group(2);
             listOfTagAttributeNames.add(tagAttributeName);

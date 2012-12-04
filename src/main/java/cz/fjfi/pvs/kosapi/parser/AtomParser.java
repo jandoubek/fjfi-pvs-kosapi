@@ -87,7 +87,7 @@ public class AtomParser {
             Pattern contentPattern = Pattern.compile(patternContentString);
             Matcher m2 = contentPattern.matcher(entryContent);
             if (m2.find()) {
-                //String contentOnly = m2.group(0);
+                // m2.group(0) returns string with tags
                 String contentAttributes = m2.group(1);
                 String contentContent = m2.group(2);
                 parseAttributes(contentAttributes);
@@ -101,7 +101,7 @@ public class AtomParser {
         Pattern attributesValue = Pattern.compile(patternAttributeString);
         Matcher m = attributesValue.matcher(contentAttributes);
         while (m.find()) {
-            //String contentAttributesOnly = m.group(0);
+            // m.group(0) returns string with tags
             String contentAttributeName = m.group(1);
             String contentAttributeValue = m.group(2);
             listOfContentAttributeNames.add(contentAttributeName);

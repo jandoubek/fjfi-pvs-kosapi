@@ -7,15 +7,9 @@ package cz.fjfi.pvs.kosapi.web;
  */
 
 
-import java.net.MalformedURLException;
-import java.security.cert.Certificate;
 import java.io.*;
  
 import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.xml.ws.WebServiceException;
-import javax.xml.ws.http.HTTPException;
-
 import org.apache.commons.codec.binary.Base64;
  
 public class HttpsClient{
@@ -33,7 +27,7 @@ public class HttpsClient{
         return name;
     }
 
-    public void setName(String name) {
+    public final void setName(String name) {
         this.name = name;
     }
 
@@ -41,7 +35,7 @@ public class HttpsClient{
         return password;
     }
 
-    public void setPassword(String password) {
+    public final void setPassword(String password) {
         this.password = password;
     }
 

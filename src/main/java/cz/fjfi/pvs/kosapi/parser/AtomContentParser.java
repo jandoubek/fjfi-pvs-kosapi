@@ -73,7 +73,7 @@ public class AtomContentParser {
         Pattern attributesValue = Pattern.compile(patternTitleString);
         Matcher m = attributesValue.matcher(entry);
         if (m.find()) {
-            //String atomTitleOnly = m.group(0);
+            // m.group(0) returns content with tags
             String atomTitleName = m.group(1);
             title = atomTitleName;
         }
@@ -83,7 +83,7 @@ public class AtomContentParser {
         Pattern attributesValue = Pattern.compile(patternIdString);
         Matcher m = attributesValue.matcher(entry);
         if (m.find()) {
-            //String atomIdOnly = m.group(0);
+            // m.group(0) returns content with tags
             String atomIdName = m.group(1);
             id = atomIdName;
         }
@@ -93,7 +93,7 @@ public class AtomContentParser {
         Pattern attributesValue = Pattern.compile(patternUpdatedString);
         Matcher m = attributesValue.matcher(entry);
         if (m.find()) {
-            //String atomUpdatedOnly = m.group(0);
+            // m.group(0) returns content with tags
             String atomUpdatedName = m.group(1);
             updated = atomUpdatedName;
         }
@@ -103,7 +103,7 @@ public class AtomContentParser {
         Pattern attributesValue = Pattern.compile(patternAuthorString);
         Matcher m = attributesValue.matcher(entry);
         if (m.find()) {
-            //String atomAuthorOnly = m.group(0);
+            // m.group(0) returns content with tags
             String atomAuthorName = m.group(1);
             author = atomAuthorName;
         }
@@ -113,7 +113,7 @@ public class AtomContentParser {
         Pattern tagPattern = Pattern.compile(patternTagString);
         Matcher m = tagPattern.matcher(content);
         while (m.find()) {
-            //String tagOnly = m.group(0);
+            // m.group(0) returns content with tags
             String tagName = m.group(1);
             String tagAttributes = m.group(2);
             String tagContent = m.group(3);
