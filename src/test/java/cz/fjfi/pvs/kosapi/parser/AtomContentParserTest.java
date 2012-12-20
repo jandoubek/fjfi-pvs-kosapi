@@ -5,8 +5,6 @@
 
 package cz.fjfi.pvs.kosapi.parser;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import junit.framework.TestCase;
 
@@ -168,10 +166,10 @@ public class AtomContentParserTest extends TestCase {
         int n = atomParser.getNumberOfEntries();
         for (int i = 0; i < n; i++) {
             AtomContentParser entry = atomParser.getEntry(i);
-            List listOfAllEntryTags = entry.getAllTags();
+            List<AtomTagParser> listOfAllEntryTags = entry.getAllTags();
             int nn = listOfAllEntryTags.size();
             for (int j = 0; j < nn; j++) {
-                AtomTagParser tag = (AtomTagParser) listOfAllEntryTags.get(j);
+                AtomTagParser tag = listOfAllEntryTags.get(j);
                 assertEquals(entryTagNames[i][j],tag.getTagName());
                 assertEquals(entryTagContents[i][j],tag.getTagContent());
             }

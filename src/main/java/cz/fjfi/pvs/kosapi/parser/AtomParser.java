@@ -11,9 +11,9 @@ import java.util.regex.Pattern;
  */
 public class AtomParser {
     private String atom;
-    private List listOfContents = new ArrayList();
-    private List listOfContentAttributeNames = new ArrayList();
-    private List listOfContentAttributeValues = new ArrayList();
+    private List<AtomContentParser> listOfContents = new ArrayList<AtomContentParser>();
+    private List<String> listOfContentAttributeNames = new ArrayList<String>();
+    private List<String> listOfContentAttributeValues = new ArrayList<String>();
     private String patternEntryString = "<atom:entry(.*?)>(.*?)</atom:entry>";
     private String patternContentString = "<atom:content(.*?)>(.*?)</atom:content>";
     private String patternAttributeString = "(\\w+?)=\"(.*?)\"";
@@ -35,7 +35,7 @@ public class AtomParser {
         }
     }
 
-    public List getAllEntries() {
+    public List<AtomContentParser> getAllEntries() {
         if (getNumberOfEntries() > 0) {
             return listOfContents;
         } else {
@@ -55,7 +55,7 @@ public class AtomParser {
         }
     }
 
-    public List getAllAttributeNames() {
+    public List<String> getAllAttributeNames() {
         if (getNumberOfAttributes() > 0) {
             return listOfContentAttributeNames;
         } else {
@@ -71,7 +71,7 @@ public class AtomParser {
         }
     }
 
-    public List getAllAttributeValues() {
+    public List<String> getAllAttributeValues() {
         if (getNumberOfAttributes() > 0) {
             return listOfContentAttributeValues;
         } else {

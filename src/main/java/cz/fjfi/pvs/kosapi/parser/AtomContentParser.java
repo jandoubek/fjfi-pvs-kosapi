@@ -1,6 +1,7 @@
 package cz.fjfi.pvs.kosapi.parser;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,7 +17,7 @@ public class AtomContentParser {
     private String id = "";
     private String updated = "";
     private String author = "";
-    private List listOfTags = new ArrayList();
+    private List<AtomTagParser> listOfTags = new ArrayList<AtomTagParser>();
     private String patternTitleString = "<atom:title>(.*?)</atom:title>";
     private String patternIdString = "<atom:id>(.*?)</atom:id>";
     private String patternUpdatedString = "<atom:updated>(.*?)</atom:updated>";
@@ -60,8 +61,22 @@ public class AtomContentParser {
             return null;
         }
     }
+    
+    public AtomTagParser getTagByName(String searchedName)
+    {
+		Iterator<AtomTagParser> tagsIterator = listOfTags.iterator();
+		while(tagsIterator.hasNext())
+		{
+			AtomTagParser tag = tagsIterator.next();
+			if(searchedName.equals(tag.getTagName()))
+			{
+				return tag;
+			}
+		}
+		return null;
+    }
 
-    public List getAllTags() {
+    public List<AtomTagParser> getAllTags() {
         if (getNumberOfTags() > 0) {
             return listOfTags;
         } else {

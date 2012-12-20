@@ -12,8 +12,8 @@ import java.util.regex.Pattern;
 public class AtomTagParser {
     private String name = "";
     private String content = "";
-    private List listOfTagAttributeNames = new ArrayList();
-    private List listOfTagAttributeValues = new ArrayList();
+    private List<String> listOfTagAttributeNames = new ArrayList<String>();
+    private List<String> listOfTagAttributeValues = new ArrayList<String>();
     private String patternAttributeString = "(\\w+?)=\"(.*?)\"";
 
     public AtomTagParser(String tagName, String tagAttributes, String tagContent) {
@@ -42,7 +42,7 @@ public class AtomTagParser {
         }
     }
 
-    public List getAllAttributeNames() {
+    public List<String> getAllAttributeNames() {
         if (getNumberOfAttributes() > 0) {
             return listOfTagAttributeNames;
         } else {
@@ -58,7 +58,7 @@ public class AtomTagParser {
         }
     }
 
-    public List getAllAttributeValues() {
+    public List<String> getAllAttributeValues() {
         if (getNumberOfAttributes() > 0) {
             return listOfTagAttributeValues;
         } else {

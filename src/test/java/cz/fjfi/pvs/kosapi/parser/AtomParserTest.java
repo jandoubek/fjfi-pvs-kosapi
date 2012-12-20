@@ -115,7 +115,7 @@ public class AtomParserTest extends TestCase {
      * Test of getAllEntries method, of class AtomParser.
      */
     public void testGetAllEntries() {
-        List listOfAllEntries = atomParser.getAllEntries();
+        List<AtomContentParser> listOfAllEntries = atomParser.getAllEntries();
         int n = listOfAllEntries.size();
         for (int i = 0; i < n; i++) {
             AtomContentParser entry = (AtomContentParser) listOfAllEntries.get(i);
@@ -150,7 +150,7 @@ public class AtomParserTest extends TestCase {
      * Test of getAllAttributeNames method, of class AtomParser.
      */
     public void testGetAllAttributeNames() {
-        List listOfAllAttributeNames = atomParser.getAllAttributeNames();
+        List<String> listOfAllAttributeNames = atomParser.getAllAttributeNames();
         int n = listOfAllAttributeNames.size();
         for (int i = 0; i < n; i++) {
             String attributeName = (String) listOfAllAttributeNames.get(i);
@@ -173,7 +173,7 @@ public class AtomParserTest extends TestCase {
      * Test of getAllAttributeValues method, of class AtomParser.
      */
     public void testGetAllAttributeValues() {
-        List listOfAllAttributeValues = atomParser.getAllAttributeValues();
+        List<String> listOfAllAttributeValues = atomParser.getAllAttributeValues();
         int n = listOfAllAttributeValues.size();
         for (int i = 0; i < n; i++) {
             String attributeValue = (String) listOfAllAttributeValues.get(i);
