@@ -3,8 +3,6 @@ package cz.fjfi.pvs.kosapi.web;
 import java.io.IOException;
 import java.util.Properties;
 
-import cz.fjfi.pvs.kosapi.App;
-
 public class KosAtomReader {
 	private String response;
 	
@@ -30,7 +28,7 @@ public class KosAtomReader {
 	private Properties loadProperties(String properties) throws IOException{
         String fullPropertiesName = properties + ".properties";
         Properties settings = new Properties();
-        settings.load(App.class.getResourceAsStream(fullPropertiesName));
+        settings.load(this.getClass().getResourceAsStream(fullPropertiesName));
         return settings;
     }
 }

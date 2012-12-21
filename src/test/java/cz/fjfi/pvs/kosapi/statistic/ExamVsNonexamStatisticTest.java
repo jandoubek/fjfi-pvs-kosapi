@@ -1,9 +1,9 @@
 package cz.fjfi.pvs.kosapi.statistic;
 
 import java.util.Arrays;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.Assert;
@@ -16,11 +16,11 @@ import cz.fjfi.pvs.kosapi.web.KosAtomReader;
 public class ExamVsNonexamStatisticTest{
 	
 	private final String credit = "CREDIT";
-	private final String credit_exam = "CREDIT_EXAM";
+	private final String creditExam = "CREDIT_EXAM";
 	
-	// TODO: should use Hashtable<String, Double> instead of List<Double>
+	// TODO: should use Map<String, Double> instead of List<Double>
 	private final List<Double> expectedResult = new ArrayList<Double>(Arrays.asList(2.0, 8.0));
-	private final double equality_precision = 1e-5;
+	private final double equalityPrecision = 1e-5;
 	
 	@Test
 	public void verifyExamRatio()
@@ -32,10 +32,10 @@ public class ExamVsNonexamStatisticTest{
 		when(kosReader.getKosResponse()).thenReturn(mockingResult);
 		String kosResponse = kosReader.getKosResponse();
 		ExamVsNonexamStatistic examVsNonexams = new ExamVsNonexamStatistic(kosResponse);
-		Hashtable<String, Double> result = examVsNonexams.getStatisticValues();
+		Map<String, Double> result = examVsNonexams.getStatisticValues();
 		double creditNumber = result.get(credit);
-		double examNumber = result.get(credit_exam);
-		Assert.assertEquals(expectedResult.get(0), examNumber, equality_precision);
-		Assert.assertEquals(expectedResult.get(1), creditNumber, equality_precision);
+		double examNumber = result.get(creditExam);
+		Assert.assertEquals(expectedResult.get(0), examNumber, equalityPrecision);
+		Assert.assertEquals(expectedResult.get(1), creditNumber, equalityPrecision);
 	}
 }

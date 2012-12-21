@@ -35,7 +35,6 @@ public abstract class Chart {
 		}
 		catch(IOException saveException)
 		{
-			saveException.printStackTrace();
 			System.err.println("Nelze vytvořit výstupní soubor.");
 		}
 	}

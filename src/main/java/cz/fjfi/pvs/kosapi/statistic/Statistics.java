@@ -1,6 +1,7 @@
 package cz.fjfi.pvs.kosapi.statistic;
 
 import java.util.Hashtable;
+import java.util.Map;
 
 /**
  * 
@@ -10,7 +11,7 @@ import java.util.Hashtable;
 public abstract class Statistics {
 	
 	protected String kosResponse;
-	protected Hashtable<String, Double> statisticValues = new Hashtable<String, Double>();
+	protected Map<String, Double> statisticValues = new Hashtable<String, Double>();
 	
 	public Statistics(String kosResponse)
 	{
@@ -18,7 +19,7 @@ public abstract class Statistics {
 		statisticValues = computeStatistic();
 	}
 	
-	public Hashtable<String, Double> getStatisticValues()
+	public Map<String, Double> getStatisticValues()
 	{
 		return statisticValues;
 	}
@@ -32,5 +33,5 @@ public abstract class Statistics {
 		}
 	}
 	
-	protected abstract Hashtable<String, Double> computeStatistic();
+	protected abstract Map<String, Double> computeStatistic();
 }

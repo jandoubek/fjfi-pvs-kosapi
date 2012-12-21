@@ -1,6 +1,6 @@
 package cz.fjfi.pvs.kosapi.chart;
 
-import java.util.Hashtable;
+import java.util.Map;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.plot.PiePlot3D;
@@ -12,14 +12,14 @@ public class PieChart3D extends Chart {
 	
 	private DefaultPieDataset dataset = new DefaultPieDataset();
 	
-	public PieChart3D(Hashtable<String, Double> data, String title)
+	public PieChart3D(Map<String, Double> data, String title)
 	{
 		createDataset(data);
 		chart = ChartFactory.createPieChart3D(title, dataset, true, true, true);
 		setChartProperties();
 	}
 	
-	private void createDataset(Hashtable<String, Double> data)
+	private void createDataset(Map<String, Double> data)
 	{
 		for(String key: data.keySet())
 		{
@@ -29,7 +29,7 @@ public class PieChart3D extends Chart {
 	}
 
 	@Override
-	protected void setChartProperties() 
+	protected final void setChartProperties() 
 	{
 		PiePlot3D p = (PiePlot3D) chart.getPlot();
 		p.setForegroundAlpha(foregroundAlpha);
