@@ -149,7 +149,7 @@ public class AtomTagParserTest extends TestCase {
             int nn = entry.getNumberOfTags();
             for (int j = 0; j < nn; j++) {
                 AtomTagParser tag = entry.getTag(j);
-                List listOfAllTagAttributeNames = tag.getAllAttributeNames();
+                List<String> listOfAllTagAttributeNames = tag.getAllAttributeNames();
                 int nnn = 0;
                 if (listOfAllTagAttributeNames != null) {
                     nnn = listOfAllTagAttributeNames.size();
@@ -189,7 +189,7 @@ public class AtomTagParserTest extends TestCase {
             int nn = entry.getNumberOfTags();
             for (int j = 0; j < nn; j++) {
                 AtomTagParser tag = entry.getTag(j);
-                List listOfAllTagAttributeValues = tag.getAllAttributeValues();
+                List<String> listOfAllTagAttributeValues = tag.getAllAttributeValues();
                 int nnn = 0;
                 if (listOfAllTagAttributeValues != null) {
                     nnn = listOfAllTagAttributeValues.size();

@@ -25,9 +25,9 @@ public abstract class Chart {
 		saveAsPNG(outputFile, new Size2D(800, 600));
 	}
 	
-	public void saveAsPNG(String outputFile, Size2D size)
+	public void saveAsPNG(String outputFileName, Size2D size)
 	{
-		outputFile += ".png";
+		String outputFile = outputFileName + ".png";
 		try
 		{
 			ChartUtilities.saveChartAsPNG(new File(outputFile), chart, (int)size.width, (int)size.height);
