@@ -6,3 +6,4 @@ notes.md
 .project
 .settings/
 courses.xml
+tmp/*
