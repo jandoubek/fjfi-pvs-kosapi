@@ -3,7 +3,6 @@ package cz.fjfi.pvs.kosapi;
 import cz.fjfi.pvs.kosapi.chart.PieChart3D;
 import cz.fjfi.pvs.kosapi.statistic.ExamVsNonexamStatistic;
 import cz.fjfi.pvs.kosapi.web.KosAtomReader;
-import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
 
