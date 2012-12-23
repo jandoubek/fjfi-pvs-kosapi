@@ -3,6 +3,7 @@ package cz.fjfi.pvs.kosapi.chart;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import org.apache.log4j.Logger;
 
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
@@ -17,6 +18,8 @@ public abstract class Chart {
 	protected boolean antiAlias = true;
 	protected boolean textAntiAlias = true;
 	protected boolean borderVisible = false;
+        
+        protected Logger logger = Logger.getLogger(Chart.class);
 	
 	protected abstract void setChartProperties();
 	
@@ -31,11 +34,11 @@ public abstract class Chart {
 		try
 		{
 			ChartUtilities.saveChartAsPNG(new File(outputFile), chart, (int)size.width, (int)size.height);
-			System.out.println("Chart saved as " + outputFile);
+			logger.info("Chart saved as: " + outputFile);
 		}
 		catch(IOException saveException)
 		{
-			System.err.println("Nelze vytvořit výstupní soubor.");
+			logger.error(saveException.getMessage(), saveException);
 		}
 	}
 }

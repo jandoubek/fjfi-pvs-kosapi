@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
  
 public class HttpsClient{
     
-    static Logger logger = Logger.getLogger(HttpsClient.class);
+    private static Logger logger = Logger.getLogger(HttpsClient.class);
     
     private String name;
     private String password;
@@ -53,7 +53,6 @@ public class HttpsClient{
     
     private HttpsURLConnection establishConnection(URL url) throws IOException{
         logger.info("Connecting to url: " + url.toString());
-        logger.info("Connecting with username: " + getName());
         String authStringEnc = computeAuthString();
             
         HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -62,6 +61,7 @@ public class HttpsClient{
     }
     
     private String computeAuthString(){
+        logger.info("Connecting with username: " + getName());
         String authString = getName() + ":" + getPassword();
         byte[] authEncBytes = Base64.encodeBase64(authString.getBytes());
         return new String(authEncBytes);

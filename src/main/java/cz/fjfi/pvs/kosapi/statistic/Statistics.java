@@ -2,6 +2,7 @@ package cz.fjfi.pvs.kosapi.statistic;
 
 import java.util.Hashtable;
 import java.util.Map;
+import org.apache.log4j.Logger;
 
 /**
  * 
@@ -12,6 +13,8 @@ public abstract class Statistics {
 	
 	protected String kosResponse;
 	protected Map<String, Double> statisticValues = new Hashtable<String, Double>();
+        
+        protected Logger logger = Logger.getLogger(Statistics.class);
 	
 	public Statistics(String kosResponse)
 	{
@@ -29,7 +32,7 @@ public abstract class Statistics {
 		for(String key: statisticValues.keySet())
 		{
 			Double value = statisticValues.get(key);
-			System.out.println(key + ": " + value);
+			logger.info(key + ": " + value);
 		}
 	}
 	
