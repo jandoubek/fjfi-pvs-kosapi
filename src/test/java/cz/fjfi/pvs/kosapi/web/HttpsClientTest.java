@@ -11,8 +11,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import javax.net.ssl.HttpsURLConnection;
+import org.apache.log4j.PropertyConfigurator;
 import org.junit.Test;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 
@@ -21,6 +23,11 @@ import org.junit.rules.ExpectedException;
  * @author edariedl
  */
 public class HttpsClientTest {
+    @BeforeClass
+    public static void setup() {
+        java.net.URL log4Jresource = HttpsClientTest.class.getResource("/cz/fjfi/pvs/kosapi/logger.properties");
+        PropertyConfigurator.configure(log4Jresource);
+    }
 
     /**
      * Test of getName method, of class HttpsClient.

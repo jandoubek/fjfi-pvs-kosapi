@@ -22,4 +22,8 @@ public class URL {
     public URLConnection openConnection() throws IOException{
         return url.openConnection();
     }
+    
+    public String toString (){
+        return url.toString(); //url.getHost() + url.getPath();
+    }
 }

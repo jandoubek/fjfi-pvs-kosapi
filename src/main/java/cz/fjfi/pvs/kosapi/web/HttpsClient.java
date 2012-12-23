@@ -11,11 +11,17 @@ import java.io.*;
  
 import javax.net.ssl.HttpsURLConnection;
 import org.apache.commons.codec.binary.Base64;
+
+import org.apache.log4j.Logger;
  
 public class HttpsClient{
     
+    static Logger logger = Logger.getLogger(HttpsClient.class);
+    
     private String name;
     private String password;
+    
+    
  
     public  HttpsClient(String name, String password) throws IOException
     {
@@ -39,14 +45,15 @@ public class HttpsClient{
         this.password = password;
     }
 
-    public String getUrl(URL url) throws IOException {   
+    public String getUrl(URL url) throws IOException {
         HttpsURLConnection connection = establishConnection(url);
         checkResponseCode(connection.getResponseCode());
         return readContent(connection);
     }
     
     private HttpsURLConnection establishConnection(URL url) throws IOException{
-      
+        logger.info("Connecting to url: " + url.toString());
+        logger.info("Connecting with username: " + getName());
         String authStringEnc = computeAuthString();
             
         HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -61,6 +68,7 @@ public class HttpsClient{
     }
     
     private void checkResponseCode(int statusCode) {
+        logger.info("Checking status code: " + statusCode);
         if (statusCode >= 400 && statusCode < 600) {
             String msg = "Request ends up with status code: " + statusCode;
             throw new WebHttpException(msg, statusCode);
@@ -68,6 +76,7 @@ public class HttpsClient{
     }
  
     private String readContent(HttpsURLConnection connection) throws IOException{
+        logger.info("Reading content from response;");
         if(connection == null){
             return "";
         }
