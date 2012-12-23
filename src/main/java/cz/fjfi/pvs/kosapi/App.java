@@ -15,7 +15,7 @@ public class App
 {
     static Logger logger = Logger.getLogger(App.class);
     
-    public static void main( String[] args ) throws IOException, Exception
+    public static void main( String[] args )
     {   
         loadLoggerProperties();
         logger.info("Starting application");
@@ -30,7 +30,6 @@ public class App
             pieChart.saveAsPNG("tmp/chart");
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            throw e;
         }
     }
     

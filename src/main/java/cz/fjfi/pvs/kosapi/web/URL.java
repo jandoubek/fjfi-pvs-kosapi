@@ -24,6 +24,6 @@ public class URL {
     }
     
     public String toString (){
-        return url.toString(); //url.getHost() + url.getPath();
+        return url.toString();
     }
 }
