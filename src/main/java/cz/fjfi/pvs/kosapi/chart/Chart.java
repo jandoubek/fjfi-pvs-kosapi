@@ -1,7 +1,6 @@
 package cz.fjfi.pvs.kosapi.chart;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 
@@ -9,7 +8,6 @@ import javax.swing.JFrame;
 
 import org.apache.log4j.Logger;
 
-import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.ui.Size2D;

@@ -1,15 +1,10 @@
 package cz.fjfi.pvs.kosapi;
 
 import cz.fjfi.pvs.kosapi.chart.PieChart3D;
-import cz.fjfi.pvs.kosapi.parser.AtomContentParser;
-import cz.fjfi.pvs.kosapi.parser.AtomParser;
-import cz.fjfi.pvs.kosapi.parser.AtomTagParser;
 import cz.fjfi.pvs.kosapi.statistic.ExamVsNonexamStatistic;
 import cz.fjfi.pvs.kosapi.statistic.TeachersPerDivisionStatistic;
 import cz.fjfi.pvs.kosapi.web.KosAtomReader;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.PropertyConfigurator;
