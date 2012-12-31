@@ -1,8 +1,15 @@
 package cz.fjfi.pvs.kosapi.statistic;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import org.apache.log4j.Logger;
+
+import cz.fjfi.pvs.kosapi.parser.AtomContentParser;
+import cz.fjfi.pvs.kosapi.parser.AtomParser;
+import cz.fjfi.pvs.kosapi.parser.AtomTagParser;
 
 /**
  * 
@@ -16,10 +23,10 @@ public abstract class Statistics {
         
         protected Logger logger = Logger.getLogger(Statistics.class);
 	
-	public Statistics(String kosResponse)
+	public Statistics(String kosResponse, String requiredTag)
 	{
 		this.kosResponse = kosResponse;
-		statisticValues = computeStatistic();
+		statisticValues = computeStatistic(requiredTag);
 	}
 	
 	public Map<String, Double> getStatisticValues()
@@ -36,5 +43,23 @@ public abstract class Statistics {
 		}
 	}
 	
-	protected abstract Map<String, Double> computeStatistic();
+	protected abstract Map<String, Double> computeStatistic(String requiredTag);
+	
+	protected List<AtomTagParser> getKosTagsByName(String tagName)
+	{
+		AtomParser atomParser = new AtomParser(kosResponse);
+		List<AtomContentParser> atomContentList = atomParser.getAllEntries();
+		Iterator<AtomContentParser> atomContentIterator = atomContentList.iterator();
+		List<AtomTagParser> tagList = new ArrayList<AtomTagParser>();
+		while(atomContentIterator.hasNext())
+		{
+			AtomContentParser atomContent = atomContentIterator.next();
+			AtomTagParser completionTag = atomContent.getTagByName(tagName);
+			if(completionTag != null)
+			{
+				tagList.add(completionTag);
+			}
+		}
+		return tagList;
+	}
 }

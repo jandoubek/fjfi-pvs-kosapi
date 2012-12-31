@@ -31,7 +31,7 @@ public class ExamVsNonexamStatisticTest{
 		KosAtomReader kosReader = mock(KosAtomReader.class);
 		when(kosReader.getKosResponse()).thenReturn(mockingResult);
 		String kosResponse = kosReader.getKosResponse();
-		ExamVsNonexamStatistic examVsNonexams = new ExamVsNonexamStatistic(kosResponse);
+		ExamVsNonexamStatistic examVsNonexams = new ExamVsNonexamStatistic(kosResponse, "completions");
 		Map<String, Double> result = examVsNonexams.getStatisticValues();
 		double creditNumber = result.get(credit);
 		double examNumber = result.get(creditExam);

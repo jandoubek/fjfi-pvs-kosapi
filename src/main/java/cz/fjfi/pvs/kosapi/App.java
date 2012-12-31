@@ -1,9 +1,15 @@
 package cz.fjfi.pvs.kosapi;
 
 import cz.fjfi.pvs.kosapi.chart.PieChart3D;
+import cz.fjfi.pvs.kosapi.parser.AtomContentParser;
+import cz.fjfi.pvs.kosapi.parser.AtomParser;
+import cz.fjfi.pvs.kosapi.parser.AtomTagParser;
 import cz.fjfi.pvs.kosapi.statistic.ExamVsNonexamStatistic;
+import cz.fjfi.pvs.kosapi.statistic.TeachersPerDivisionStatistic;
 import cz.fjfi.pvs.kosapi.web.KosAtomReader;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.PropertyConfigurator;
@@ -18,16 +24,28 @@ public class App
     {   
         loadLoggerProperties();
         logger.info("Starting application");
-        try {
+        try 
+        {
             KosAtomReader coursesReader = new KosAtomReader("courses");
             String coursesResponse = coursesReader.getKosResponse();
-            ExamVsNonexamStatistic examsVsNonexams = new ExamVsNonexamStatistic(coursesResponse);
+            ExamVsNonexamStatistic examsVsNonexams = new ExamVsNonexamStatistic(coursesResponse, "completion");
             examsVsNonexams.printStatisticValues();
 
-            Map<String, Double> statisticValues = examsVsNonexams.getStatisticValues();
-            PieChart3D pieChart = new PieChart3D(statisticValues, "Courses chart");
-            pieChart.saveAsPNG("tmp/chart");
-        } catch (Exception e) {
+            Map<String, Double> examsStatisticValues = examsVsNonexams.getStatisticValues();
+            PieChart3D examsChart = new PieChart3D(examsStatisticValues, "Courses chart");
+            examsChart.saveAsPNG("tmp/examsVsNonexams");
+            
+            KosAtomReader teachersReader = new KosAtomReader("teachers");
+            String teachersResponse = teachersReader.getKosResponse();
+            TeachersPerDivisionStatistic teachersPerDivision = new TeachersPerDivisionStatistic(teachersResponse, "division");
+            teachersPerDivision.printStatisticValues();
+            
+            Map<String, Double> teachersStatisticValues = teachersPerDivision.getStatisticValues();
+            PieChart3D teachersChart = new PieChart3D(teachersStatisticValues, "Teachers Per Division chart");
+            teachersChart.saveAsPNG("tmp/teachersPerDivision");
+        } 
+        catch (Exception e) 
+        {
             logger.error(e.getMessage(), e);
         }
     }
