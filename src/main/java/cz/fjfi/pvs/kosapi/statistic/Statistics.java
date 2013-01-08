@@ -21,7 +21,7 @@ public abstract class Statistics {
 	protected String kosResponse;
 	protected Map<String, Double> statisticValues = new Hashtable<String, Double>();
         
-        protected Logger logger = Logger.getLogger(Statistics.class);
+    protected Logger logger = Logger.getLogger(Statistics.class);
 	
 	public Statistics(String kosResponse, String requiredTag)
 	{
